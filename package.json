@@ -1,0 +1,19 @@
+{
+  "name": "sottocapo",
+  "version": "1.0.0",
+  "description": "Chatbot application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "author": "Artem Y Silka",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "ibm-watson": "^5.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
