@@ -2,10 +2,10 @@
 const express = require("express");
 const router = express.Router();
 const AssistantV2 = require("ibm-watson/assistant/v2");
-const { Authenticator } = require("ibm-watson/auth");
+const { IamAuthenticator } = require("ibm-watson/auth");
 
 // instance of assistant
-const authenticator = new Authenticator({
+const authenticator = new IamAuthenticator({
   apikey: process.env.WATSON_ASSISTANT_APIKEY,
 });
 
@@ -30,7 +30,26 @@ router.get("/session", async (req, res) => {
 });
 
 // handle messages
+// POST /api/watson/message
+router.post("/message", async (req, res) => {
+  // Create payload
+  payload = {
+    assistantId: process.env.WATSON_ASSISTANT_ID,
+    sessionId: req.headers.session_id,
+    input: {
+      message_type: "text",
+      text: req.body.input,
+    },
+  };
 
-// export routes
+  try {
+    const message = await assistant.message(payload);
+    res.json(message["result"]);
+  } catch (err) {
+    res.send("Ooops, something went wrong..");
+    console.log(err);
+  }
+});
+
 module.exports = router;
  
