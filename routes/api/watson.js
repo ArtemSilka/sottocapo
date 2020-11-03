@@ -10,7 +10,7 @@ const authenticator = new IamAuthenticator({
 });
 
 const assistant = new AssistantV2({
-  version: "2020-11-01",
+  version: "2019-02-28",
   authenticator: authenticator,
   url: process.env.WATSON_ASSISTANT_URL,
 });
