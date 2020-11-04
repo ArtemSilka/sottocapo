@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
 
+import watson from "./watson";
 
-export default combineReducers({});
+export default combineReducers({ watson });
